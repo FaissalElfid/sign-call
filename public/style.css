@@ -5,6 +5,7 @@
 
 .main__left {
     flex: 0.8;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
