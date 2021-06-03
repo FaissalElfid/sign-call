@@ -8,13 +8,15 @@ const myPeer = new Peer(undefined, {
 let myVideoStream;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
-const peers = {}
+const peers = {};
+var userColors = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
 }).then(stream => {
   myVideoStream = stream;
   addVideoStream(myVideo, stream)
+  const userId
   myPeer.on('call', call => {
     call.answer(stream)
     const video = document.createElement('video')
@@ -25,6 +27,7 @@ navigator.mediaDevices.getUserMedia({
 
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
+    setTheNewUserColor(userId)
   })
   // input value
   let text = $("input");
@@ -36,7 +39,7 @@ navigator.mediaDevices.getUserMedia({
     }
   });
   socket.on("createMessage", message => {
-    $("ul").append(`<li class="message"><b style="color:blue;">user</b><br/>${message}</li>`);
+    $("ul").append(`<li class="message"><b style="color:${userColors.userId};">user</b><br/>${message}</li>`);
     scrollToBottom()
   })
 })
@@ -48,7 +51,10 @@ socket.on('user-disconnected', userId => {
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id)
 })
-
+function setTheNewUserColor(userId, userColors) {
+  var colors = ['red', 'green', 'blue', 'orange', 'yellow'];
+  userColors.userId = colors[Math.floor(Math.random() * colors.length)];
+}
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
   const video = document.createElement('video')
