@@ -8,7 +8,7 @@ const myPeer = new Peer(undefined, {
 let myVideoStream;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
-const peers = {};
+const peers = {}
 var userColors = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
@@ -16,7 +16,6 @@ navigator.mediaDevices.getUserMedia({
 }).then(stream => {
   myVideoStream = stream;
   addVideoStream(myVideo, stream)
-  const userId
   myPeer.on('call', call => {
     call.answer(stream)
     const video = document.createElement('video')
@@ -27,7 +26,7 @@ navigator.mediaDevices.getUserMedia({
 
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
-    setTheNewUserColor(userId)
+    // setTheNewUserColor(userId)
   })
   // input value
   let text = $("input");
@@ -39,7 +38,7 @@ navigator.mediaDevices.getUserMedia({
     }
   });
   socket.on("createMessage", message => {
-    $("ul").append(`<li class="message"><b style="color:${userColors.userId};">user</b><br/>${message}</li>`);
+    $("ul").append(`<li class="message"><b style="color:blue;">user</b><br/>${message}</li>`);
     scrollToBottom()
   })
 })
