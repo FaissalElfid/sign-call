@@ -100,7 +100,17 @@ const playStop = () => {
     myVideoStream.getVideoTracks()[0].enabled = true;
   }
 }
-
+const toggleChat = () => {
+  var chat = document.getElementById("chat");
+  var video = document.getElementById("main_left");
+  if (chat.style.display === "none") {
+    video.style.flex= "0.8";
+    chat.style.display = "block";
+  } else {
+    video.style.flex= "1";
+    chat.style.display = "none";
+  }
+}
 const setMuteButton = () => {
   const html = `
     <i class="fas fa-microphone"></i>
