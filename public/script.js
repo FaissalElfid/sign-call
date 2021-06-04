@@ -8,8 +8,7 @@ const myPeer = new Peer(undefined, {
 let myVideoStream;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
-const peers = {}
-var userColors = {};
+const peers = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true
@@ -38,7 +37,7 @@ navigator.mediaDevices.getUserMedia({
     }
   });
   socket.on("createMessage", message => {
-    $("ul").append(`<li class="message"><b style="color:blue;">user</b><br/>${message}</li>`);
+    $("ul").append(`<li class="message"><b>user</b><br/>${message}</li>`);
     scrollToBottom()
   })
 })
