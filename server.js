@@ -66,7 +66,7 @@ app.get("/room", (req, rsp) => {
 });
 
 app.get("/room:room", (req, res) => {
-  res.render("room", { roomId: req.params.room });
+  res.render("room", { roomId: req.params.room, name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value});
 });
 
 io.on("connection", (socket) => {
