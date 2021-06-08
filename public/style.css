@@ -91,9 +91,16 @@
     flex-grow: 1;
     background-color: transparent;
     border: none;
-    color: #F5F5F5;
+    color: #f5f5f5;
+    user-select: none;
+    outline: none;
 }
-
+#all_messages li {
+    color: #fff;
+    list-style: none;
+    border-bottom: 1px solid #3d3d42;
+    padding: 10px 0;
+  }
 .leave_meeting {
     color: #EB534B;
 }
