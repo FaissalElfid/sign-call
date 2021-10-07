@@ -1,5 +1,5 @@
 # Sign Call
-This is a video conferencing call app built with Node JS, express js, socket.io and WebRTC
+This is a video conferencing call app built with Node JS, express js, socket.io and passport
 
 1. Pull or Download this repo.
 2. Navigate to the folder
